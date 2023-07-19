@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const { PORT, DB_URI } = require('./config');
 const errorsHandler = require('./middlewares/errorsHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -19,6 +20,7 @@ mongoose.connect(DB_URI)
   });
 
 const app = express();
+app.use(cors());
 
 // Использование middleware Helmet для обеспечения безопасности приложения
 app.use(helmet());
