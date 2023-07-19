@@ -1,0 +1,18 @@
+.error__link {
+    text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 50px;
+    text-align: center;
+    text-shadow:
+        /* белый свет */
+        0 0 1px #fff,
+        0 0 2px #fff,
+        0 0 5px #fff,
+        /* зеленый свет */
+        0 0 11px #0fa,
+        0 0 20px #0fa,
+        0 0 30px #0fa,
+        0 0 55px #0fa,
+        0 0 80px #0fa;
+}

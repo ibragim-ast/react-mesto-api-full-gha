@@ -1,0 +1,19 @@
+.form__input {
+  max-width: 358px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #808080;
+  outline: none;
+  margin: 0 auto;
+  padding: 0 0 7px;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+.form__input_invalid {
+  border-bottom: 1px solid #ff0000;
+}

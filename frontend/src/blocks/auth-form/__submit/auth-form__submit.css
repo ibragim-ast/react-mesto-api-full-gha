@@ -1,0 +1,26 @@
+.auth-form__submit {
+    cursor: pointer;
+    height: 50px;
+    margin-top: 184px;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    color: #000;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    background-color: #fff;
+    transition: opacity 0.25s;
+}
+
+.auth-form__submit:hover {
+    opacity: 0.85;
+}
+
+@media (max-width: 425px) {
+    .auth-form__submit {
+        margin-top: 174px;
+        height: 46px;
+        margin-top: 175px;
+    }
+}

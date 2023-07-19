@@ -1,0 +1,7 @@
+.form__section {
+  max-width: 80%;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}

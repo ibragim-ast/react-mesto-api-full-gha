@@ -1,0 +1,6 @@
+.popup__image-open {
+    display: flex;
+    min-height: 120px;
+    max-width: 120px;
+    margin: 60px auto 32px;
+}

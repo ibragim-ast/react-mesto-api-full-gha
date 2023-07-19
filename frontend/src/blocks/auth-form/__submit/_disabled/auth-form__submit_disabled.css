@@ -1,0 +1,6 @@
+.auth-form__submit_disabled {
+    background-color: white;
+    opacity: .2;
+    pointer-events: none;
+    color: #000;
+}

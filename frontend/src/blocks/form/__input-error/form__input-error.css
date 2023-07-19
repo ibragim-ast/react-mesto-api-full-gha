@@ -1,0 +1,16 @@
+.form__input-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  color: #ff0000;
+  margin: 0;
+  padding: 0;
+  display: block;
+  min-height: 28px;
+}
+
+@media (max-width: 767px) {
+  .form__input-error {
+    min-height: 26px;
+  }
+}

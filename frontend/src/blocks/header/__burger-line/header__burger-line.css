@@ -1,0 +1,19 @@
+.header__burger-line {
+    background-color: #fff;
+    height: 3px;
+    transition: all 0.3s ease;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    transform-origin: center;
+    z-index: 3;
+}
+
+.header__burger-line:nth-child(1) {
+    transform: translateY(-9px);
+}
+
+.header__burger-line:nth-child(3) {
+    transform: translateY(9px);
+}

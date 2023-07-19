@@ -1,0 +1,11 @@
+.header__burger-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    margin-right: 5%;
+    transition: opacity 0.25s;
+}
+
+.header__burger-link:hover {
+    opacity: 0.85;
+}

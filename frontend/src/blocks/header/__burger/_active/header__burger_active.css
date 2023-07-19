@@ -1,0 +1,14 @@
+@media (max-width: 767px) {
+    .header__burger_active .header__burger-line:nth-child(1) {
+        transform: translateY(-50%) rotate(45deg);
+    }
+
+    .header__burger_active .header__burger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header__burger_active .header__burger-line:nth-child(3) {
+        transform: translateY(-50%) rotate(-45deg);
+    }
+
+}
