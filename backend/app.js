@@ -9,6 +9,21 @@ const errorsHandler = require('./middlewares/errorsHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const router = require('./routes');
 
+const allowedCors = [
+  'http://ibragimast.nomoredomains.xyz',
+  'https://ibragimast.nomoredomains.xyz',
+  'localhost:3000',
+  'http://localhost',
+  'http://localhost:3001',
+  'http://localhost:3000',
+];
+
+const corsOptions = {
+  origin: allowedCors,
+  optionsSuccessStatus: 200,
+  credentials: true,
+};
+
 // Подключение к базе данных MongoDB
 mongoose.connect(DB_URI)
   .then(() => {
@@ -20,7 +35,6 @@ mongoose.connect(DB_URI)
   });
 
 const app = express();
-app.use(cors());
 
 // Использование middleware Helmet для обеспечения безопасности приложения
 app.use(helmet());
@@ -30,13 +44,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Middleware для ограничения количества запросов от одного IP
-app.use(rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 минут
-  max: 100, // максимальное количество запросов
-  message: 'Слишком много запросов с вашего IP, попробуйте позже',
-}));
+// app.use(rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 минут
+//   max: 100, // максимальное количество запросов
+//   message: 'Слишком много запросов с вашего IP, попробуйте позже',
+// }));
 
 app.use(requestLogger);
+
+app.use(cors(corsOptions));
 
 // Подключение маршрутизатора
 app.use(router);

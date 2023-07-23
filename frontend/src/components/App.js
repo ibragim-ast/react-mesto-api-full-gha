@@ -51,7 +51,7 @@ function App() {
             setIsLoading(false)
             setLoggedIn(true);
             navigate('/', { replace: true });
-            setEmail(res.data.email);
+            setEmail(res.email);
           }
         })
         .catch((err) => console.log(err));

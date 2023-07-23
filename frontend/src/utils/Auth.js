@@ -45,7 +45,8 @@ class Auth {
 }
 
 const auth = new Auth({
-    baseUrl: "https://auth.nomoreparties.co",
+    //baseUrl: "https://ibragimast.nomoredomains.xyz",
+    baseUrl: "http://localhost:3000",
     headers: {
         'Content-Type': 'application/json'
     },

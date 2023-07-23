@@ -1,7 +1,6 @@
 class Api {
   constructor(setting) {
     this._address = setting.baseUrl;
-    this._headers = setting.headers;
   }
 
   _checkErrors(res) {
@@ -12,24 +11,37 @@ class Api {
   }
 
   getUserInfo() {
+    const token = localStorage.getItem('jwt');
+    
     return fetch(`${this._address}/users/me`, {
       method: 'GET',
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+      }
     })
       .then(res => this._checkErrors(res))
   }
 
   getCardsList() {
+    const token = localStorage.getItem('jwt');
+
     return fetch(`${this._address}/cards`, {
-      headers: this._headers
+      headers: {
+        authorization: `Bearer ${token}`,
+      }
     })
-      .then(res => this._checkErrors(res))
+      .then(res => this._checkErrors(res));
   }
 
   setUserInfo(data) {
-    return fetch(`${this._address}users/me`, {
+    const token = localStorage.getItem('jwt');
+
+    return fetch(`${this._address}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -39,9 +51,13 @@ class Api {
   }
 
   setUserAvatar(link) {
-    return fetch(`${this._address}users/me/avatar`, {
+    const token = localStorage.getItem('jwt');
+    
+    return fetch(`${this._address}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify({
         avatar: link.avatar,
       }),
@@ -49,37 +65,57 @@ class Api {
       .then((res) => this._checkErrors(res))
   }
 
-  createNewCard(data) {
-    return fetch(`${this._address}cards`, {
-      headers: this._headers,
+  createNewCard({ name, link }) {
+    const token = localStorage.getItem('jwt');
+
+    return fetch(`${this._address}/cards`, {
       method: "POST",
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
-        name: data.name, link: data.link
+        name, 
+        link,
       })
     })
       .then((res) => this._checkErrors(res))
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._address}cards/${cardId}`, {
+    const token = localStorage.getItem('jwt');
+
+    return fetch(`${this._address}/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
     })
       .then(res => this._checkErrors(res))
   }
 
   putLikeCard(cardId) {
-    return fetch(`${this._address}cards/${cardId}/likes/`, {
+    const token = localStorage.getItem('jwt');
+    
+    return fetch(`${this._address}/cards/${cardId}/likes/`, {
       method: "PUT",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
     })
       .then(res => this._checkErrors(res))
   }
 
   deleteLikeCard(cardId) {
-    return fetch(`${this._address}cards/${cardId}/likes/`, {
+    const token = localStorage.getItem('jwt');
+    
+    return fetch(`${this._address}/cards/${cardId}/likes/`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
     })
       .then(res => this._checkErrors(res))
   }
@@ -94,11 +130,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64/',
-  headers: {
-    authorization: 'd8c1ea30-e545-47be-9a07-052774c37113',
-    'Content-Type': 'application/json'
-  }
+  baseUrl: 'http://localhost:3000',
 });
 
 
