@@ -1,7 +1,6 @@
 import Card from "./Card.js";
 import { CurrentUserContext } from "./CurrentUserContext";
 import React from "react";
-import Footer from "./Footer.js";
 
 function Main({
     onEditProfile,
