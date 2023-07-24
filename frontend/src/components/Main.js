@@ -67,7 +67,6 @@ function Main({
                     </ul>
                 </section>
             </main>
-            <Footer className="footer" />
         </>
     )
 }
