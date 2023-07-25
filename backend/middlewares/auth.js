@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 const { UNAUTHORIZED_ERROR_MESSAGE } = require('../utils/constants');
+const { NODE_ENV, JWT_SECRET } = require('../config');
 
 // Функция обработки ошибки авторизации
 const handleAuthError = () => {
@@ -22,7 +23,9 @@ module.exports.auth = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, 'very-secret-key');
+    payload = jwt.verify(token, NODE_ENV === 'production'
+      ? JWT_SECRET
+      : 'dev-secret');
   } catch (err) {
     return handleAuthError(res);
   }
