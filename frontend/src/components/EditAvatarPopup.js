@@ -8,13 +8,17 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
     const avatarRef = React.useRef();
     const { values, errors, isValid, handleChange,
         resetForm } = useFormValidator('form');
+    
+    React.useEffect(() => {
+        avatarRef.current.value = "";
+        }, [isOpen]);
 
     function handleSubmit() {
         onUpdateAvatar({
             avatar: avatarRef.current.value,
         });
     }
-
+     
     React.useEffect(() => {
         resetForm();
     }, [isOpen, resetForm])

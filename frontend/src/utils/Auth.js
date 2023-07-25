@@ -45,8 +45,9 @@ class Auth {
 }
 
 const auth = new Auth({
-    //baseUrl: "https://ibragimast.nomoredomains.xyz",
+    //baseUrl: "https://api.ibragimast.nomoredomains.xyz",
     baseUrl: "http://localhost:3000",
+    //baseUrl: 'https://api.akhtool.mesto.nomoredomains.work',
     headers: {
         'Content-Type': 'application/json'
     },

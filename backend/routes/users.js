@@ -37,5 +37,6 @@ router.patch('/me/avatar', celebrate({
     avatar: Joi.string().required().regex(URL_REGEX),
   }),
 }), updateUserAvatar);
+console.log(updateUserAvatar);
 
 module.exports = router;

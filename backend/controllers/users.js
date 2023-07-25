@@ -55,14 +55,15 @@ const handleUpdateUserError = (next, error, avatar) => {
 // Функция обновления информации о пользователе
 const UpdateUserData = (req, res, next, data) => {
   const { _id } = req.user;
-
+  console.log(_id);
+  // console.log('req.user => ', req.user);
   User.findByIdAndUpdate(_id, data, {
     new: true,
     runValidators: true,
   })
     .then((user) => {
       checkData(user);
-      return res.send(user);
+      res.send(user);
     })
     .catch((error) => handleUpdateUserError(next, error, data.avatar));
 };

@@ -161,9 +161,10 @@ function App() {
   }
 
   function handleUpdateAvatar(userData) {
-    api.setUserAvatar(userData)
-      .then((userData) => {
-        setCurrentUser(userData);
+    api
+      .setUserAvatar(userData)
+      .then((data) => {
+        setCurrentUser(data);
         closeAllPopups();
       })
       .catch((err) => {

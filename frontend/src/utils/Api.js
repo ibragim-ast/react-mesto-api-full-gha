@@ -50,17 +50,18 @@ class Api {
       .then((res) => this._checkErrors(res))
   }
 
-  setUserAvatar(link) {
+  setUserAvatar(data) {
     const token = localStorage.getItem('jwt');
-    
+
     return fetch(`${this._address}/users/me/avatar`, {
       method: "PATCH",
       headers: {
         authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        avatar: link.avatar,
-      }),
+        avatar: data.avatar,
+      })
     })
       .then((res) => this._checkErrors(res))
   }
@@ -130,7 +131,9 @@ class Api {
 }
 
 export const api = new Api({
+  //baseUrl: 'https://api.akhtool.mesto.nomoredomains.work',
   baseUrl: 'http://localhost:3000',
+  //baseUrl: 'https://api.ibragimast.nomoredomains.xyz',
 });
 
 
