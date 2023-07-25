@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { Error: { ValidationError, CastError } } = require('mongoose');
-const User = require('../models/user')
+const User = require('../models/user');
 const { NODE_ENV, JWT_SECRET } = require('../config');
 
 const {
