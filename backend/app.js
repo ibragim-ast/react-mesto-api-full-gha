@@ -44,14 +44,14 @@ app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(requestLogger);
+
 // Middleware для ограничения количества запросов от одного IP
 app.use(rateLimit({
   windowMs: 15 * 60 * 1000, // 15 минут
   max: 100, // максимальное количество запросов
   message: 'Слишком много запросов с вашего IP, попробуйте позже',
 }));
-
-app.use(requestLogger);
 
 app.use(cors(corsOptions));
 
