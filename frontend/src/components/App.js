@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { api } from "../utils/Api";
 import { CurrentUserContext } from './CurrentUserContext';
 import ProtectedRoute from './ProtectedRoute.js';
@@ -214,22 +214,25 @@ function App() {
           email={email}
         />
         <Routes>
-        <Route
-        path="/"
-        element={loggedIn ? <Main
-          onEditProfile={handleEditProfileClick}
-          onAddPlace={handleAddPlaceClick}
-          onEditAvatar={handleEditAvatarClick}
-          onCardClick={handleCardClick}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-          cards={cards}
-          email={email}
-          onSignout={handleSignout}
-        /> : <Navigate to="/sign-up" replace />}
-      />
-          <Route path="/sign-up" element={<Register onSubmit={handleRegisterSubmit} />} />
-          <Route path="/sign-in" element={<Login title="Вход" buttonText="Войти" onLogin={handleLoginSubmit} />} />
+        <Route path="/sign-in" element={<Login title="Вход" buttonText="Войти" onLogin={handleLoginSubmit} />} />
+        <Route path="/sign-up" element={<Register onSubmit={handleRegisterSubmit} />} />
+          <Route
+            path="/" 
+            element={
+              <ProtectedRoute
+                isLoading={isLoading}
+                loggedIn={loggedIn}
+                element={Main}
+                onEditProfile={handleEditProfileClick}
+                onAddPlace={handleAddPlaceClick}
+                onEditAvatar={handleEditAvatarClick}
+                onCardClick={handleCardClick}
+                onCardLike={handleCardLike}
+                onCardDelete={handleCardDelete}
+                cards={cards}
+                email={email}
+                onSignout={handleSignout}
+              />} />
           <Route path='*' element={<ErrorPage />} onLogin={handleLoginSubmit} />
         </Routes>
         <EditProfilePopup

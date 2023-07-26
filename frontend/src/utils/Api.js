@@ -131,9 +131,8 @@ class Api {
 }
 
 export const api = new Api({
-  //baseUrl: 'https://api.akhtool.mesto.nomoredomains.work',
-  baseUrl: 'http://localhost:3000',
-  //baseUrl: 'https://api.ibragimast.nomoredomains.xyz',
+  //baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.ibragimast.nomoredomains.xyz',
 });
 
 

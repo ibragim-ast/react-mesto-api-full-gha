@@ -28,10 +28,10 @@ const corsOptions = {
 // Подключение к базе данных MongoDB
 mongoose.connect(DB_URI)
   .then(() => {
-    console.log('База данных в нашем распоряжении, Милорд');
+    console.log('Связь с базой данных установлена');
   })
   .catch((error) => {
-    console.log('Тут какая-то ошибка:', error);
+    console.log('Ошибка базы данных:', error);
     process.exit(1);
   });
 
@@ -74,5 +74,5 @@ app.use(errorsHandler);
 
 // Запуск сервера на указанном порту
 app.listen(PORT, () => {
-  console.log('Сервер успешно запущен, Милорд');
+  console.log('Сервер успешно запущен!');
 });
